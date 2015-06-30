@@ -1,0 +1,37 @@
+<div>
+	<h3>Welcome, <span ng-bind='user.name'></span></h3>
+	<input id='searchPosts' type="text" ng-model='filter_posts' placeholder='filter..'>
+	<table>
+		<thead>
+			<th>Category</th>
+			<th>Topic</th>
+			<th>User Name</th>
+			<th>Posts</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat='post in posts | filter: filter_posts'>
+				<td ng-bind='post.category'></td>
+				<td ng-bind='post.topic'></td>
+				<td ng-bind='post.user_name'></td>
+				<td ng-bind='post.post_count'></td>
+			</tr>
+		</tbody>
+	</table>
+	<div>
+		<h3>Add a new Topic</h3>
+		<p>
+			Topic: <input type="text" ng-model='new_post.topic'>
+		</p>
+		<p>
+			Description: <textarea ng-model='new_post.description'></textarea>
+		</p>
+		<p>Category: 
+			<select ng-model='new_post.category'><!-- ng-options='category.name for category in categories' ng-model='new_post.category' -->
+				<option value="">-- Category --</option>
+				<option value="HTML">HTML</option>
+				<option value="CSS">CSS</option>
+			</select>
+		</p>
+		<input type="submit" ng-click='addTopic()' value='Submit'>
+	</div>
+</div>
